@@ -1,0 +1,26 @@
+.nav{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 40px;
+
+}
+.first{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.constract{
+    display: flex;
+    flex-direction: row;
+}
+.line_order{
+    display: flex;
+    flex-direction: row;
+    margin-left: 50px;
+}
+.burger{
+    margin-left: 8px;
+}
