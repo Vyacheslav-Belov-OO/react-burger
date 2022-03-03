@@ -1,16 +1,26 @@
+
 .nav{
     display:flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-top: 40px;
+    
 
 }
 .first{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    
+    width: 33%;
+}
+.secod{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 33%;
+    justify-content: flex-end;
+    
 }
 .constract{
     display: flex;
@@ -19,7 +29,7 @@
 .line_order{
     display: flex;
     flex-direction: row;
-    margin-left: 50px;
+    
 }
 .burger{
     margin-left: 8px;

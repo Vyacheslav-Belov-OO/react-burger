@@ -23,6 +23,14 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.main{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  width: 1240px;
+  margin: 0 auto;
+
+}
 
 .App-link {
   color: #61dafb;
