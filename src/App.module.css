@@ -26,9 +26,10 @@
 .main{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  align-items: center;
+  align-items: start;
   width: 1240px;
   margin: 0 auto;
+  gap: 40px;
 
 }
 

@@ -1,0 +1,19 @@
+.card{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.price{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+.avatar{
+    display: block;
+    margin: 0 auto;
+}
+.name{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}

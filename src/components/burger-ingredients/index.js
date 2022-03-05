@@ -3,9 +3,12 @@ import styles from './burger-ingredients.module.css';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import data from './../../static/data.json';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
+import Card from './../card';
 
 let bun = data.filter(item => item.type == 'bun');
-console.log(bun);
+let sauce = data.filter(item => item.type == 'sauce');
+let main = data.filter(item => item.type == 'main');
+
 
 
 
@@ -28,16 +31,11 @@ const BurgerIngredients = () => {
                     Начинки
                 </Tab>
             </div>
-            <p className="text text_type_main-medium  mt-10">
-                Булки
-            </p>
-            <div className='card_wrapper'>
-               <div className='card'>
-               <img className="Avatar" src={bun[0].image} alt="avatar" />
-                  <p>{bun[0].price}</p>
-                  <CurrencyIcon type="primary" />
-                  <p>{bun[0].name}</p>
-               </div>
+           
+            <div className={styles.card_wrapper}>
+                <Card data={bun} header="Булки" />
+                <Card data={sauce} header="Соусы"/>               
+              
             </div>
         </div>
     );
