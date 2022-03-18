@@ -34,7 +34,8 @@ const BurgerIngredients = () => {
            
             <div className={styles.card_wrapper}>
                 <Card data={bun} header="Булки" />
-                <Card data={sauce} header="Соусы"/>               
+                <Card data={sauce} header="Соусы"/> 
+                <Card data={main} header="Начинки"/>             
               
             </div>
         </div>

@@ -10,18 +10,29 @@ const ShortCard = () => {
     return (
         <>
             {card_data.map((item, key)=>(
-                <div className={`pt-4 pb-4 pr-8 ${style.card_wrapper}`} key={key.id}>
-                    <div className={style.card_info}>
+                <div className={`pt-4 pb-4 ${style.card_wrapper}`} key={key.id}>
+                    <div className='mr-6'>
                         <DragIcon type="primary" />
-                        <img className='' src={item.image_mobile} alt="avatar" />
-                        <p className={`text text_type_main-default ${style.item_name}`}>{item.name}</p>   
-                        <div className={style.card_price}>
-                            <p className="text text_type_digits-default">{item.price}</p>
-                            <CurrencyIcon type="primary" />
-                        </div>
-                        
-                        <LockIcon type="secondary" />
                     </div>
+
+                    <div className={`${style.card_block}`}>
+                        <div className={`${style.card_info}`}>                              
+                            <div className={style.card_1block}>
+                                <img className={style.card_img} src={item.image_mobile} alt="avatar" />
+                                <div className={`text text_type_main-default ${style.item_name}`}>{item.name}</div>                            
+                            </div>   
+                            <div className={style.card_2block}>
+                                <div className={`${style.card_price}`}>
+                                    <p className="text text_type_digits-default mr-2">{item.price}</p>
+                                    <CurrencyIcon type="primary" />
+                                </div>
+                                    <div className={style.card_icon}>
+                                    <LockIcon type="secondary" />
+                                </div>
+                            </div>  
+                        </div>
+                    </div>                    
+                    
                 </div>
             ))}
             

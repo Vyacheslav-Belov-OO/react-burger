@@ -1,5 +1,10 @@
 .burger_constructor{
-    
+    /* overflow-x: hidden;
+    overflow-y: scroll; */
+    height: 750px;
+    scrollbar-width: none; 
+    display: grid;
+    gap: 16px;
 }
 .order_block{
     display: flex;

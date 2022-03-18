@@ -24,12 +24,12 @@
   color: white;
 }
 .main{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-items: start;
-  width: 1240px;
+
+  max-width: 1240px;
   margin: 0 auto;
-  gap: 40px;
+  display: grid;
+  grid-template-columns: 600px 600px;
+  grid-column-gap: 40px;
 
 }
 
