@@ -5,9 +5,12 @@ import {  CurrencyIcon, Button } from '@ya.praktikum/react-developer-burger-ui-c
 
 const BurgerConstructor= () => {
     return (
-        <div className={`pt-25 pl-4 pr-4 pb-10 ${style.burger_constructor}`}>
-            <ShortCard />
+        <div className={`pt-25 pl-4 pb-10 ${style.burger_constructor}`}>
             
+           
+                <ShortCard />
+            
+
             <div className={`pt-10 ${style.order_block}`}>
                 <div className={`mr-10 ${style.order_block_price}`}>
                     <p className={`text text_type_digits-medium ${style.order_price}`}>610</p>

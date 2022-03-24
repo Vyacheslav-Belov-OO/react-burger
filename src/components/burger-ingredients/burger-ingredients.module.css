@@ -1,9 +1,6 @@
 .burger_ingredients{
 
-  overflow-x: hidden;
-  overflow-y: scroll;
-  height: 750px;
-  scrollbar-width: none;  
+   
     
 }
 
@@ -17,4 +14,20 @@
 .card_wrapper{
     display: grid;
     grid-template-columns: repeat(1, 1fr);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 600px;
+    
+}
+
+.card_wrapper::-webkit-scrollbar {
+  width: 12px;
+}
+.card_wrapper::-webkit-scrollbar-track {
+  background: #2F2F37;        /* цвет дорожки */
+}
+.card_wrapper::-webkit-scrollbar-thumb {
+  background-color: #8585AD;    /* цвет плашки */
+  border-radius: 20px;       /* закругления плашки */
+  border: 3px solid #2F2F37;  /* padding вокруг плашки */
 }

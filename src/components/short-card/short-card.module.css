@@ -46,7 +46,7 @@
 }
 .item_name{
     margin-right: 20px;
-    min-width: 250px;
+    
 }
 .card_icon{
     margin-left: 20px;
@@ -54,3 +54,25 @@
     align-items: center;
     cursor: pointer;
 }
+
+.card{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 380px;
+    display: grid;
+    gap: 16px;
+    padding-right: 16px;
+}
+.card::-webkit-scrollbar {
+    width: 8px;
+  }
+.card::-webkit-scrollbar-track {
+    background: #2F2F37;
+  }
+.card::-webkit-scrollbar-thumb {
+    background-color: #8585AD;
+    
+  }
+  .single_card{
+    padding-right: 24px;
+  }
