@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from './burger-ingredients.module.css';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
-import data from './../../static/data.json';
+import data from '../../static/data.json';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
-import Card from './../card';
+import IngredientList from '../ingredient-list/ingredient-list';
 
-let bun = data.filter(item => item.type == 'bun');
-let sauce = data.filter(item => item.type == 'sauce');
-let main = data.filter(item => item.type == 'main');
+const bun = data.filter(item => item.type == 'bun');
+const sauce = data.filter(item => item.type == 'sauce');
+const main = data.filter(item => item.type == 'main');
 
 
 
@@ -20,7 +20,7 @@ const BurgerIngredients = () => {
             <p className="text text_type_main-large mt-10 mb-5">
                 Соберите бургер
             </p>
-            <div style={{ display: 'flex' }}>
+            <div className={styles.tab_wrapper}>
                 <Tab value="one" active={current === 'one'} onClick={setCurrent}>
                     Булки
                 </Tab>
@@ -33,9 +33,9 @@ const BurgerIngredients = () => {
             </div>
            
             <div className={styles.card_wrapper}>
-                <Card data={bun} header="Булки" />
-                <Card data={sauce} header="Соусы"/> 
-                <Card data={main} header="Начинки"/>             
+                <IngredientList data={bun} header="Булки" />
+                <IngredientList data={sauce} header="Соусы"/> 
+                <IngredientList data={main} header="Начинки"/>             
               
             </div>
         </div>

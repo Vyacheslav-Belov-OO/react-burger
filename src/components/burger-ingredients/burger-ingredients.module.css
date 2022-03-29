@@ -3,6 +3,10 @@
    
     
 }
+.tab_wrapper{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
 
 .burger_ingredients::-webkit-scrollbar {
     display: none;
@@ -17,17 +21,25 @@
     overflow-x: hidden;
     overflow-y: scroll;
     height: 600px;
+    margin-top: 40px;
     
 }
 
+.card_wrapper{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 620px;
+  display: grid;
+  gap: 16px;
+  padding-right: 16px;
+}
 .card_wrapper::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
 }
 .card_wrapper::-webkit-scrollbar-track {
-  background: #2F2F37;        /* цвет дорожки */
+  background: #2F2F37;
 }
 .card_wrapper::-webkit-scrollbar-thumb {
-  background-color: #8585AD;    /* цвет плашки */
-  border-radius: 20px;       /* закругления плашки */
-  border: 3px solid #2F2F37;  /* padding вокруг плашки */
+  background-color: #8585AD;
+  
 }
