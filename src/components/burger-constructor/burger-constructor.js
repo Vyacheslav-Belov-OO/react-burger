@@ -1,55 +1,60 @@
 import React from 'react';
 import style from './burger-constructor.module.css'
 import {  CurrencyIcon, Button, ConstructorElement,DragIcon  } from '@ya.praktikum/react-developer-burger-ui-components';
-import data from '../../static/data.json';
 
-const BurgerConstructor= () => {
 
-    const cardData=data;
-    const bread=cardData[0];
-    const all=cardData.slice(1, 30);
+const BurgerConstructor= ({...props}) => {   
     
 
     return (
         <div className={`${style.burger_constructor}`}>
             <div className={`${style.constructor_container} mt-25 `}>
                 <div className={`ml-10 mr-5 ${style.constructor_wrapper}`}>
-                    <ConstructorElement
+
+                    {props.data &&
+                        <ConstructorElement
                         type="top"
                         isLocked={true}
                         text="Краторная булка N-200i (верх)"
-                        price={bread.price}
-                        thumbnail={bread.image_mobile}
+                        price={props.data[0].price}
+                        thumbnail={props.data[0].image_mobile}
                         className="constructor-element"
                     />
+                    }
+                    
                 </div>
-                <div className={style.constructor_list}>
-                    {all.map((item, key)=>(     
-                        <div className={style.constructor_list_wrapper} key={item._id}>
-                            <div className="mr-2" style={{ cursor: "pointer" }}>
-                                <DragIcon type="primary" />
-                            </div>          
-                            <div className={`pt-4 pb-4 ${style.constructor_wrapper}`}>
-                                <ConstructorElement
-                                key={item._id}
-                                text={item.name}
-                                price={item.price}
-                                thumbnail={item.image_mobile}
-                                />                   
-                                
-                            </div>
-                        </div> 
-                    ))}
-                </div>
-                <div className={`ml-10 mr-5 ${style.constructor_wrapper}`}>
-                    <ConstructorElement
-                        type="bottom"
-                        isLocked={true}
-                        text="Краторная булка N-200i (низ)"
-                        price={bread.price}
-                        thumbnail={bread.image_mobile}
-                    />
-                </div>
+                {props.data &&
+                    <div className={style.constructor_list}>
+                        {props.data.slice(1, 30).map((item, key)=>(     
+                            <div className={style.constructor_list_wrapper} key={item._id}>
+                                <div className="mr-2" style={{ cursor: "pointer" }}>
+                                    <DragIcon type="primary" />
+                                </div>          
+                                <div className={`pt-4 pb-4 ${style.constructor_wrapper}`}>
+                                    <ConstructorElement
+                                    key={item._id}
+                                    text={item.name}
+                                    price={item.price}
+                                    thumbnail={item.image_mobile}
+                                    />                   
+                                    
+                                </div>
+                            </div> 
+                        ))}
+                    </div>
+                }
+                
+                {props.data &&
+                    <div className={`ml-10 mr-5 ${style.constructor_wrapper}`}>
+                        <ConstructorElement
+                            type="bottom"
+                            isLocked={true}
+                            text="Краторная булка N-200i (низ)"
+                            price={props.data[0].price}
+                            thumbnail={props.data[0].image_mobile}
+                        />
+                    </div>
+                }
             </div>           
             
 
