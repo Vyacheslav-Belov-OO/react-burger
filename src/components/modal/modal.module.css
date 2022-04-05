@@ -1,0 +1,45 @@
+.wrapper{
+    width: 720px;
+    height: 718px;
+    box-sizing:border-box;
+    background-color: #1C1C21;
+    position: relative;
+    border: 1px solid rgba(76, 76, 255, 0.2);
+    box-shadow: 0px 24px 32px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 40px;
+    padding: 120px 0;
+    left: calc(50% - 360px);
+    position: fixed;
+    top: calc(50% - 360px);
+    z-index: 100;
+}
+.close{
+    position: absolute;
+    top: 60px;
+    right: 40px;
+}
+.price{
+    margin: 0 auto;
+    text-align: center;
+}
+.order_ind{
+    margin: 0 auto;
+    margin-top: 32px;    
+    text-align: center;
+}
+.check_mark{
+    width: 120px;
+    height: 120px;
+    box-sizing:border-box;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+.order_start{
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 60px;
+}
+.blue_text{
+    color:#8585AD;
+    margin-top: 8px;
+}
