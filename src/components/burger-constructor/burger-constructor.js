@@ -3,7 +3,11 @@ import style from './burger-constructor.module.css'
 import {  CurrencyIcon, Button, ConstructorElement,DragIcon  } from '@ya.praktikum/react-developer-burger-ui-components';
 
 
-const BurgerConstructor= ({...props}) => {   
+const BurgerConstructor= ({data, setActive}) => {   
+    
+        const onClickHandler = () => {
+            setActive(true)
+        }
     
 
     return (
@@ -11,21 +15,21 @@ const BurgerConstructor= ({...props}) => {
             <div className={`${style.constructor_container} mt-25 `}>
                 <div className={`ml-10 mr-5 ${style.constructor_wrapper}`}>
 
-                    {props.data &&
+                    {data &&
                         <ConstructorElement
                         type="top"
                         isLocked={true}
                         text="Краторная булка N-200i (верх)"
-                        price={props.data[0].price}
-                        thumbnail={props.data[0].image_mobile}
+                        price={data[0].price}
+                        thumbnail={data[0].image_mobile}
                         className="constructor-element"
                     />
                     }
                     
                 </div>
-                {props.data &&
+                {data &&
                     <div className={style.constructor_list}>
-                        {props.data.slice(1, 30).map((item, key)=>(     
+                        {data.slice(1, 30).map((item, key)=>(     
                             <div className={style.constructor_list_wrapper} key={item._id}>
                                 <div className="mr-2" style={{ cursor: "pointer" }}>
                                     <DragIcon type="primary" />
@@ -44,14 +48,14 @@ const BurgerConstructor= ({...props}) => {
                     </div>
                 }
                 
-                {props.data &&
+                {data &&
                     <div className={`ml-10 mr-5 ${style.constructor_wrapper}`}>
                         <ConstructorElement
                             type="bottom"
                             isLocked={true}
                             text="Краторная булка N-200i (низ)"
-                            price={props.data[0].price}
-                            thumbnail={props.data[0].image_mobile}
+                            price={data[0].price}
+                            thumbnail={data[0].image_mobile}
                         />
                     </div>
                 }
@@ -64,7 +68,7 @@ const BurgerConstructor= ({...props}) => {
                     <CurrencyIcon type="primary" />
                 </div>
                     
-                <Button type="primary" size="large">Оформить заказ</Button>
+                <Button type="primary" size="large" onClick={onClickHandler}>Оформить заказ</Button>
             </div>
            
             

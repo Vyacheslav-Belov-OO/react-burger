@@ -1,9 +1,14 @@
 import React from 'react';
 import styles from './modal-overlay.module.css';
 
-const ModalOverlay = () => {
+const ModalOverlay = ({active, setActive}) => {
+
+    const onCloseHModal= () => {
+        setActive(false)
+    }
+
     return (
-        <div className={styles.wrapper}>
+        <div className={active ? styles.modal_overlay : styles.modal_overlay_unactive} onClick={onCloseHModal}>
             
         </div>
     );

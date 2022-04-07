@@ -1,4 +1,4 @@
-.wrapper{
+.modal_overlay{
     background-color: rgba(0, 0, 0, 0.6);
     overflow: hidden;
     position: fixed;
@@ -7,4 +7,7 @@
     left: 0;
     right: 0;
     z-index: 99;
+}
+.modal_overlay_unactive{
+    display: none;
 }

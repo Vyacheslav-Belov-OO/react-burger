@@ -7,9 +7,9 @@ import IngredientList from '../ingredient-list/ingredient-list';
 
 
 
-const BurgerIngredients = ({...props}) => {
+const BurgerIngredients = ({data, active, setActive, item, setItem}) => {
   
-
+    
     const [current, setCurrent] = React.useState('one');
     return (
         <div className={styles.burger_ingredients}>
@@ -29,16 +29,16 @@ const BurgerIngredients = ({...props}) => {
             </div>
            
             <div className={styles.card_wrapper}>
-                {props.data &&
-                   <IngredientList data={props.data.filter(item => item.type == 'bun')} header="Булки" />
+                {data &&
+                   <IngredientList data={data.filter(item => item.type == 'bun')} header="Булки" active={active} setActive={setActive} item={item} setItem={setItem}/>
                    
                 }
-                {props.data &&
-                   <IngredientList data={props.data.filter(item => item.type == 'sauce')} header="Соусы" />
+                {data &&
+                   <IngredientList data={data.filter(item => item.type == 'sauce')} header="Соусы" active={active} setActive={setActive}/>
                    
                 }
-                {props.data &&
-                   <IngredientList data={props.data.filter(item => item.type == 'main')} header="Начинки" />
+                {data &&
+                   <IngredientList data={data.filter(item => item.type == 'main')} header="Начинки" active={active} setActive={setActive}/>
                    
                 }
                 
