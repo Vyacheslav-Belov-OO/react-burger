@@ -2,12 +2,9 @@ import React from 'react';
 import styles from './ingredient-details.module.css'
 
 const IngredientDetails = ({data, id}) => {
-    // {data &&
-    //     const itemId = data.filter(item => item._id == id)
-    //     console.log(itemId);
-    // }
-    // const itemId = data.filter(item => item._id == id)
-    console.log(data);
+    
+    
+    
     return (
       
         <>
@@ -17,18 +14,18 @@ const IngredientDetails = ({data, id}) => {
                     Детали ингредиента
                 </p>
             </div>
-            {data &&
-                <div>
-                    <img className="fit-picture" src={data.filter(item => item._id == id)}></img>
+            {data && 
+                <div className={styles.img}>
+                    <img className="fit-picture" src={data[0][`image_large`]}></img>
                 </div>
             }    
-            {data &&
+            
                 <div className={styles.name}>
                     <p className="text text_type_main-medium">
-                    {data.name}
+                    {data[0][`name`]}
                     </p>
                 </div>
-            }
+            
             
             <div className={styles.ingredient_details_wrapper}>
                 {data &&
@@ -36,7 +33,7 @@ const IngredientDetails = ({data, id}) => {
                         <p className="text text_type_main-default">
                             Калории,ккал
                         </p>
-                        <p className="text text_type_digits-default">{data.calories}</p>
+                        <p className="text text_type_digits-default">{data[0][`calories`]}</p>
 
                     </div>
                 }
@@ -45,7 +42,7 @@ const IngredientDetails = ({data, id}) => {
                         <p className="text text_type_main-default">  
                             Белки, г
                         </p>
-                        <p className="text text_type_digits-default">{data.proteins}</p>
+                        <p className="text text_type_digits-default">{data[0][`proteins`]}</p>
 
                     </div>
                 }
@@ -54,7 +51,7 @@ const IngredientDetails = ({data, id}) => {
                         <p className="text text_type_main-default">
                             Жиры, г
                         </p>
-                        <p className="text text_type_digits-default">{data.fat}</p>
+                        <p className="text text_type_digits-default">{data[0][`fat`]}</p>
 
                     </div>
                 }
@@ -63,7 +60,7 @@ const IngredientDetails = ({data, id}) => {
                         <p className="text text_type_main-default">
                             Углеводы, г
                         </p>
-                        <p className="text text_type_digits-default">{data.carbohydrates}</p>
+                        <p className="text text_type_digits-default">{data[0][`carbohydrates`]}</p>
 
                     </div>
                 }

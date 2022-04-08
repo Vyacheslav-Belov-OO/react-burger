@@ -1,7 +1,7 @@
 .modal{
     display: block;
     width: 720px;
-    height: 718px;
+    min-height: 540px;
     box-sizing:border-box;
     background-color: #1C1C21;
     position: relative;

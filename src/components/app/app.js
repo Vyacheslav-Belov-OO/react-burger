@@ -8,27 +8,15 @@ import OrderDetails from '../order-details/order-details';
 import IngredientDetails from '../ingredient-details/ingredient-details';
 
 
-
-
-
 function App() {
   const url = "https://norma.nomoreparties.space/api/ingredients";
 
   const [state, setState] = React.useState({data: null,});
   const [modalActive, setModalActive] = React.useState(false);
   const [modalOrder, setModalOrder] = React.useState(false);
-  const [modalDetail, setModalDetail] = React.useState(true);
-  const [itemID, setItemId] = React.useState(
-    { 
-        "_id": ""          
-    }
-  )
-  console.log(itemID);
-  console.log(state.data);
+  const [modalDetail, setModalDetail] = React.useState(false);
+  const [itemID, setItemId] = React.useState('60d3b41abdacab0026a733c6')
 
-  // console.log(state.data.filter(item => item._id == itemID))
-
-  // const [dataIngredientDetails, setDataIngredientDetails] = React.useState({data: null})
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -51,19 +39,19 @@ function App() {
           <AppHeader /> 
       </header>
       <main className={styles.main}>         
-          <BurgerIngredients data={state.data} active={modalActive} setActive={setModalActive} item={itemID} setItem={setItemId}/>
-          <BurgerConstructor data={state.data} setActive={setModalActive}/>
+          <BurgerIngredients data={state.data} active={modalActive} setActive={setModalActive} item={itemID} setItem={setItemId} setModalDetail={setModalDetail}/>
+          <BurgerConstructor data={state.data} setActive={setModalActive} setModal={setModalOrder}/>
           
           {modalOrder &&
-            <Modal active={modalActive} setActive={setModalActive}>
+            <Modal active={modalActive} setActive={setModalActive} setModalOrder={setModalOrder}>
               <OrderDetails/>
           </Modal>
           }
           {modalDetail &&
-            <Modal active={modalActive} setActive={setModalActive}>
+            <Modal active={modalActive} setActive={setModalActive} setModalDetail={setModalDetail}>
 
               {state.data &&
-                <IngredientDetails data={state.data.filter(item => item._id == itemID)} id={itemID}/>
+                <IngredientDetails data={state.data.filter(item => item._id == itemID)} id={itemID} />
               }
               
             </Modal>

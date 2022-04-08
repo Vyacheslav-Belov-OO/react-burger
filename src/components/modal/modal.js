@@ -5,11 +5,13 @@ import ModalOverlay from '../modal-overlay/modal-overlay';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 
 
-const Modal = ({active, setActive, ...props}) => {
+const Modal = ({active, setActive, setModalOrder, setModalDetail, ...props}) => {
     
     const portal = document.getElementById("portal");    
     const onClose = () =>{
         setActive(false)
+        setModalOrder(false)
+        setModalDetail(false)
     };
 
     React.useEffect(() => {
@@ -28,7 +30,7 @@ const Modal = ({active, setActive, ...props}) => {
 
     return ReactDOM.createPortal(
         <>
-            <ModalOverlay active={active} setActive={setActive}/>
+            <ModalOverlay active={active} setActive={setActive} setModalOrder={setModalOrder} setModalDetail={setModalDetail}/>
             <div className={active ? styles.modal : styles.modal_active}>
                 <div className={styles.close}>
                     <CloseIcon type="primary" onClick={onClose} />

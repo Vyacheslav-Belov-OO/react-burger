@@ -2,14 +2,15 @@ import React from 'react';
 import styles from './burger-ingredients.module.css';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import IngredientList from '../ingredient-list/ingredient-list';
+import PropTypes from 'prop-types';
 
 
 
 
 
-const BurgerIngredients = ({data, active, setActive, item, setItem}) => {
+const BurgerIngredients = ({data, active, setActive, item, setItem, setModalDetail}) => {
   
-    
+    console.log(data);
     const [current, setCurrent] = React.useState('one');
     return (
         <div className={styles.burger_ingredients}>
@@ -30,15 +31,15 @@ const BurgerIngredients = ({data, active, setActive, item, setItem}) => {
            
             <div className={styles.card_wrapper}>
                 {data &&
-                   <IngredientList data={data.filter(item => item.type == 'bun')} header="Булки" active={active} setActive={setActive} item={item} setItem={setItem}/>
+                   <IngredientList data={data.filter(item => item.type == 'bun')} header="Булки" active={active} setActive={setActive} item={item} setItem={setItem} setModalDetail={setModalDetail}/>
                    
                 }
                 {data &&
-                   <IngredientList data={data.filter(item => item.type == 'sauce')} header="Соусы" active={active} setActive={setActive}/>
+                   <IngredientList data={data.filter(item => item.type == 'sauce')} header="Соусы" active={active} setActive={setActive} item={item} setItem={setItem}/>
                    
                 }
                 {data &&
-                   <IngredientList data={data.filter(item => item.type == 'main')} header="Начинки" active={active} setActive={setActive}/>
+                   <IngredientList data={data.filter(item => item.type == 'main')} header="Начинки" active={active} setActive={setActive} item={item} setItem={setItem}/>
                    
                 }
                 
@@ -47,5 +48,7 @@ const BurgerIngredients = ({data, active, setActive, item, setItem}) => {
         </div>
     );
 };
+
+
 
 export default BurgerIngredients;

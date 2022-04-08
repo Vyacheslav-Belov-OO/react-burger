@@ -2,7 +2,7 @@ import React from 'react';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import style from './ingredient-list.module.css';
 
-const IngredientList = ( {data, header, setActive, item, setItem} ) => {
+const IngredientList = ( {data, header, setActive, item, setItem, setModalDetail} ) => {
     
   
     
@@ -12,7 +12,7 @@ const IngredientList = ( {data, header, setActive, item, setItem} ) => {
             <p className="text text_type_main-medium mt-10 mb-6">{header}</p>
             <div className={`pl ${style.card}`}>                
                 {data.map((item, key)=>(
-                    <div className={style.card_content} key={item._id} onClick={()=>{setItem({"_id": item._id}); setActive(true)}} id={item._id}>
+                    <div className={style.card_content} key={item._id} onClick={()=>{setItem(item._id); setActive(true); setModalDetail(true)}} id={item._id}>
                         <img className={`mb-1 ${style.avatar}`} src={item.image} alt="avatar" />                        
                         <div className={`mb-1 ${style.price}`}>
                             <p className="text text_type_digits-default mr-2">{item.price}</p>

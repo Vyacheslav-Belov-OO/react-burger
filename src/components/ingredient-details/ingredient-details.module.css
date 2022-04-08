@@ -3,6 +3,10 @@
     height: 64px;
     margin-left: 40px;
 }
+.img{
+    display: flex;
+    justify-content: center;
+}
 .name{
     margin: 0 auto;
     text-align: center;

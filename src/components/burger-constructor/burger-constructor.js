@@ -3,10 +3,11 @@ import style from './burger-constructor.module.css'
 import {  CurrencyIcon, Button, ConstructorElement,DragIcon  } from '@ya.praktikum/react-developer-burger-ui-components';
 
 
-const BurgerConstructor= ({data, setActive}) => {   
+const BurgerConstructor= ({data, setActive, setModal}) => {   
     
         const onClickHandler = () => {
             setActive(true)
+            setModal(true)
         }
     
 

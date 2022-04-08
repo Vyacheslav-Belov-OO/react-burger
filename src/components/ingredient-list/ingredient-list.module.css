@@ -19,3 +19,6 @@
     margin: 0 auto;
     text-align: center;
 }
+.card_content{
+    cursor: pointer;
+}

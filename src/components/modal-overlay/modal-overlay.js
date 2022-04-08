@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './modal-overlay.module.css';
 
-const ModalOverlay = ({active, setActive}) => {
+const ModalOverlay = ({active, setActive,setModalOrder,setModalDetail}) => {
 
     const onCloseHModal= () => {
         setActive(false)
+        setModalOrder(false)
+        setModalDetail(false)
     }
 
     return (
