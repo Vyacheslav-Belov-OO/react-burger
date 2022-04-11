@@ -22,6 +22,9 @@ function App() {
     const fetchData = async () => {
       try {
         const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error('Ответ сети был не ok.');
+        }
         const resJson = await response.json();
         setState({ data: resJson.data });
       }
@@ -32,6 +35,12 @@ function App() {
     fetchData();
     
   }, []);
+
+  const onClose = () =>{
+    setModalActive(false)
+    setModalOrder(false)
+    setModalDetail(false)
+};
   
   return (
     <div>
@@ -43,15 +52,15 @@ function App() {
           <BurgerConstructor data={state.data} setActive={setModalActive} setModal={setModalOrder}/>
           
           {modalOrder &&
-            <Modal active={modalActive} setActive={setModalActive} setModalOrder={setModalOrder}>
+            <Modal active={modalActive} onClose={onClose}>
               <OrderDetails/>
           </Modal>
           }
           {modalDetail &&
-            <Modal active={modalActive} setActive={setModalActive} setModalDetail={setModalDetail}>
+            <Modal active={modalActive} onClose={onClose}>
 
               {state.data &&
-                <IngredientDetails data={state.data.filter(item => item._id == itemID)} id={itemID} />
+                <IngredientDetails data={state.data.filter(item => item._id == itemID)} />
               }
               
             </Modal>

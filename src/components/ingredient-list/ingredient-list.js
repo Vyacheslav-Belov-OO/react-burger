@@ -1,8 +1,9 @@
 import React from 'react';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import style from './ingredient-list.module.css';
+import PropTypes from 'prop-types';
 
-const IngredientList = ( {data, header, setActive, item, setItem, setModalDetail} ) => {
+const IngredientList = ( {data, header, setActive, setItem, setModalDetail} ) => {
     
   
     
@@ -26,5 +27,13 @@ const IngredientList = ( {data, header, setActive, item, setItem, setModalDetail
         </div>
     );
 };
+IngredientList.propTypes = {
+    data: PropTypes.array.isRequired, 
+    header: PropTypes.string.isRequired, 
+    setActive: PropTypes.func.isRequired, 
+    setItem: PropTypes.func.isRequired, 
+    setModalDetail: PropTypes.func.isRequired
+    
+}
 
 export default IngredientList;

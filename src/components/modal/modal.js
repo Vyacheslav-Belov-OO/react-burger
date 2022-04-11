@@ -3,26 +3,22 @@ import ReactDOM from 'react-dom';
 import styles from './modal.module.css';
 import ModalOverlay from '../modal-overlay/modal-overlay';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
+import PropTypes from 'prop-types';
 
 
-const Modal = ({active, setActive, setModalOrder, setModalDetail, ...props}) => {
+const Modal = ({active, onClose, ...props}) => {
     
     const portal = document.getElementById("portal");    
-    const onClose = () =>{
-        setActive(false)
-        setModalOrder(false)
-        setModalDetail(false)
-    };
-
+  
     React.useEffect(() => {
-        const closeModal = (e) => {
+        const onClose = (e) => {
             if (e.key === "Escape" ) {
                 onClose();
             }
         };
-        document.addEventListener("keydown", closeModal);
+        document.addEventListener("keydown", onClose);
         return () => {
-            document.removeEventListener("keydown", closeModal);
+            document.removeEventListener("keydown", onClose);
         };
     }, []);
     
@@ -30,7 +26,7 @@ const Modal = ({active, setActive, setModalOrder, setModalDetail, ...props}) => 
 
     return ReactDOM.createPortal(
         <>
-            <ModalOverlay active={active} setActive={setActive} setModalOrder={setModalOrder} setModalDetail={setModalDetail}/>
+            <ModalOverlay active={active} onClose={onClose}/>
             <div className={active ? styles.modal : styles.modal_active}>
                 <div className={styles.close}>
                     <CloseIcon type="primary" onClick={onClose} />
@@ -42,5 +38,11 @@ const Modal = ({active, setActive, setModalOrder, setModalDetail, ...props}) => 
         
     );
 };
+
+Modal.propTypes= {
+    active: PropTypes.bool.isRequired,
+    onClose: PropTypes.func.isRequired  
+}
+
 
 export default Modal;
