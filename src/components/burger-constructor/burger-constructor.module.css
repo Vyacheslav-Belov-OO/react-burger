@@ -1,0 +1,64 @@
+.burger_constructor{
+
+    display: grid;
+    grid-template-columns: auto;
+    gap: 16px;
+    
+}
+.order_block{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+}
+.order_block_price{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+
+}
+.order_price{
+    margin-right: 10px;
+}
+
+.constructor_list{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 380px;
+    display: grid;
+    gap: 16px;
+    padding-right: 16px;
+}
+.constructor_list::-webkit-scrollbar {
+    width: 8px;
+  }
+.constructor_list::-webkit-scrollbar-track {
+    background: #2F2F37;
+  }
+.constructor_list::-webkit-scrollbar-thumb {
+    background-color: #8585AD;
+    
+  }
+  .constructor_wrapper{
+      display: flex;
+      justify-content: flex-end;
+      min-width: 540px;
+  }
+  .constructor_list_wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .constructor_container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-row-gap: 16px;
+  }
+  :global(.constructor-element) {
+    max-width: none;
+    width: 100%;
+    min-height: unset;
+    height: 80px;
+  }
+  
