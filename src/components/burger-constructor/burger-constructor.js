@@ -2,16 +2,11 @@ import React from 'react';
 import style from './burger-constructor.module.css'
 import {  CurrencyIcon, Button, ConstructorElement,DragIcon  } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from 'prop-types';
+import menuItemPropTypes from '../../utils/constants'
 
 
-const BurgerConstructor= ({data, setActive, setModal}) => {   
+const BurgerConstructor= ({data, setActive}) => {   
     
-        const onClickHandler = () => {
-            setActive(true)
-            setModal(true)
-        }
-    
-
     return (
         <div className={`${style.burger_constructor}`}>
             <div className={`${style.constructor_container} mt-25 `}>
@@ -70,7 +65,7 @@ const BurgerConstructor= ({data, setActive, setModal}) => {
                     <CurrencyIcon type="primary" />
                 </div>
                     
-                <Button type="primary" size="large" onClick={onClickHandler}>Оформить заказ</Button>
+                <Button type="primary" size="large" onClick={setActive}>Оформить заказ</Button>
             </div>
            
             
@@ -78,9 +73,9 @@ const BurgerConstructor= ({data, setActive, setModal}) => {
     );
 };
 BurgerConstructor.propTypes= {
-    data: PropTypes.array,
+
+    data: PropTypes.arrayOf(menuItemPropTypes.isRequired).isRequired,
     setActive: PropTypes.func.isRequired,
-    setModal: PropTypes.func.isRequired  
 }
 
 export default BurgerConstructor

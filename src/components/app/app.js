@@ -15,8 +15,7 @@ function App() {
   const [modalActive, setModalActive] = React.useState(false);
   const [modalOrder, setModalOrder] = React.useState(false);
   const [modalDetail, setModalDetail] = React.useState(false);
-  const [itemID, setItemId] = React.useState('60d3b41abdacab0026a733c6')
-
+  const [itemID, setItemId] = React.useState('')
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -41,15 +40,25 @@ function App() {
     setModalOrder(false)
     setModalDetail(false)
 };
+
+  const onOpenBurgerModal = () =>{   
+    setModalActive(true)
+    setModalOrder(true)  
+  }
   
   return (
     <div>
       < header className={styles.app_header}>    
           <AppHeader /> 
       </header>
-      <main className={styles.main}>         
-          <BurgerIngredients data={state.data} active={modalActive} setActive={setModalActive} item={itemID} setItem={setItemId} setModalDetail={setModalDetail}/>
-          <BurgerConstructor data={state.data} setActive={setModalActive} setModal={setModalOrder}/>
+      <main className={styles.main}>
+        {state.data &&
+        <>
+          <BurgerIngredients data={state.data} active={modalActive} setActive={setModalActive} setItem={setItemId} setModalDetail={setModalDetail}/>
+          <BurgerConstructor data={state.data} setActive={onOpenBurgerModal}/>
+        </>          
+        }         
+          
           
           {modalOrder &&
             <Modal active={modalActive} onClose={onClose}>
@@ -60,7 +69,7 @@ function App() {
             <Modal active={modalActive} onClose={onClose}>
 
               {state.data &&
-                <IngredientDetails data={state.data.filter(item => item._id == itemID)} />
+                <IngredientDetails data={state.data.find(item => item._id == itemID)} />
               }
               
             </Modal>

@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './ingredient-details.module.css'
 import PropTypes from 'prop-types';
-const IngredientDetails = ({data}) => {
+import menuItemPropTypes from '../../utils/constants'
+
+const IngredientDetails = ({ data}) => {
     
-   
-    
+  
+    console.log(data);
     return (
       
         <>
@@ -16,13 +18,13 @@ const IngredientDetails = ({data}) => {
             </div>
             {data && 
                 <div className={styles.img}>
-                    <img className="fit-picture" src={data[0][`image_large`]}></img>
+                    <img className="fit-picture" src={data.image_large}></img>
                 </div>
             }    
             
                 <div className={styles.name}>
                     <p className="text text_type_main-medium">
-                    {data[0][`name`]}
+                    {data.name}
                     </p>
                 </div>
             
@@ -33,7 +35,7 @@ const IngredientDetails = ({data}) => {
                         <p className="text text_type_main-default">
                             Калории,ккал
                         </p>
-                        <p className="text text_type_digits-default">{data[0][`calories`]}</p>
+                        <p className="text text_type_digits-default">{data.calories}</p>
 
                     </div>
                 }
@@ -42,7 +44,7 @@ const IngredientDetails = ({data}) => {
                         <p className="text text_type_main-default">  
                             Белки, г
                         </p>
-                        <p className="text text_type_digits-default">{data[0][`proteins`]}</p>
+                        <p className="text text_type_digits-default">{data.proteins}</p>
 
                     </div>
                 }
@@ -51,7 +53,7 @@ const IngredientDetails = ({data}) => {
                         <p className="text text_type_main-default">
                             Жиры, г
                         </p>
-                        <p className="text text_type_digits-default">{data[0][`fat`]}</p>
+                        <p className="text text_type_digits-default">{data.fat}</p>
 
                     </div>
                 }
@@ -60,7 +62,7 @@ const IngredientDetails = ({data}) => {
                         <p className="text text_type_main-default">
                             Углеводы, г
                         </p>
-                        <p className="text text_type_digits-default">{data[0][`carbohydrates`]}</p>
+                        <p className="text text_type_digits-default">{data.carbohydrates}</p>
 
                     </div>
                 }
@@ -72,7 +74,8 @@ const IngredientDetails = ({data}) => {
     );
 };
 IngredientDetails.propTypes = {
-    data: PropTypes.array.isRequired
+    data: menuItemPropTypes.isRequired,
+  
 
 }
 

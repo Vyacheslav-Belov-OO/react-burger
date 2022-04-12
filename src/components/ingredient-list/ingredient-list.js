@@ -2,12 +2,12 @@ import React from 'react';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import style from './ingredient-list.module.css';
 import PropTypes from 'prop-types';
+import menuItemPropTypes from '../../utils/constants'
+
+
 
 const IngredientList = ( {data, header, setActive, setItem, setModalDetail} ) => {
-    
-  
-    
-    
+    console.log(data);
     return (
         <div className={`mb-10 ${style.card_main}`}>
             <p className="text text_type_main-medium mt-10 mb-6">{header}</p>
@@ -28,7 +28,7 @@ const IngredientList = ( {data, header, setActive, setItem, setModalDetail} ) =>
     );
 };
 IngredientList.propTypes = {
-    data: PropTypes.array.isRequired, 
+    data: PropTypes.arrayOf(menuItemPropTypes.isRequired).isRequired,
     header: PropTypes.string.isRequired, 
     setActive: PropTypes.func.isRequired, 
     setItem: PropTypes.func.isRequired, 
