@@ -6,10 +6,11 @@ import BurgerConstructor from '../burger-constructor/burger-constructor';
 import Modal from '../modal/modal';
 import OrderDetails from '../order-details/order-details';
 import IngredientDetails from '../ingredient-details/ingredient-details';
+import {apiUrl} from '../../utils/apiUrl'
 
 
 function App() {
-  const url = "https://norma.nomoreparties.space/api/ingredients";
+  
 
   const [state, setState] = React.useState({data: null,});
   const [modalActive, setModalActive] = React.useState(false);
@@ -20,7 +21,7 @@ function App() {
   React.useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(url);
+        const response = await fetch(apiUrl);
         if (!response.ok) {
           throw new Error('Ответ сети был не ok.');
         }
