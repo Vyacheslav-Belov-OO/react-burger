@@ -1,8 +1,8 @@
-import {GET_DATA, GET_DATA_SUCCESS, GET_DATA_FAILED} from './actions.js'
+import {FETCH_DATA, FETCH_DATA_SUCCESS, FETCH_DATA_FAILED} from './actions.js'
 
 export const initialState = {
 
-    ingredients: [],
+    ingridients: [],
     order: null,
     currentBurgerIngredients: [],
     currentIngredient: [],   
@@ -13,19 +13,19 @@ export const initialState = {
 
 export const getIngridientsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_DATA:{
+        case FETCH_DATA:{
             return {
                 ...state,
             }
         }
-        case GET_DATA_SUCCESS: {
+        case FETCH_DATA_SUCCESS: {
             return {
                 ...state,
-                data: action.data,
+                ingridients: action.ingridients,
 
             }
         }
-        case GET_DATA_FAILED: {
+        case FETCH_DATA_FAILED: {
             return {
                 ...state,
 

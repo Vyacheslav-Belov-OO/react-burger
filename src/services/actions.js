@@ -1,15 +1,15 @@
 import {apiUrl} from '../utils/apiUrl'
-export const GET_DATA = 'GET_DATA';
-export const GET_DATA_SUCCESS = 'GET_DATA_SUCCESS';
-export const GET_DATA_FAILED = 'GET_DATA_FAILED';
+export const FETCH_DATA = 'FETCH_DATA';
+export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
+export const FETCH_DATA_FAILED = 'FETCH_DATA_FAILED';
 
 
 export function getData () {
     return function (dispatch) {
       dispatch({
-        type: GET_DATA,
+        type: FETCH_DATA,
       });
-      fetch(apiUrl + "/ingredients")
+      fetch(apiUrl)
         .then( (res) => {
             if (res.ok) {
                 return res.json();
@@ -22,18 +22,18 @@ export function getData () {
         .then((res) => {
           if (res && res.success) {
             dispatch({
-              type: GET_DATA_SUCCESS,
-              data: res.data,
+              type: FETCH_DATA_SUCCESS,
+              ingridients: res.data,
             });
           } else {
             dispatch({
-              type: GET_DATA_FAILED,
+              type: FETCH_DATA_FAILED,
             });
           }
         })
         .catch((e) => {
           dispatch({
-            type: GET_DATA_FAILED,
+            type: FETCH_DATA_FAILED,
           });
         });
     };

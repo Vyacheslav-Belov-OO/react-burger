@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './burger-ingredients.module.css';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import IngredientList from '../ingredient-list/ingredient-list';
@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import menuItemPropTypes from '../../utils/constants'
 import {connect} from 'react-redux'
 import { useDispatch, useSelector } from "react-redux";
+import {getData} from '../../services/actions'
 
 
 
@@ -13,7 +14,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 const BurgerIngredients = ({data, active, setActive, setItem, setModalDetail}) => {
     const dispatch = useDispatch();
-    const ingredients = useSelector((state) => state.ingredients.data);
+    useEffect(()=> {
+        dispatch(getData());
+    }, [dispatch])
+
+    const ingredients = useSelector((state) => state.ingridients);
     console.log(ingredients);
 
     const [current, setCurrent] = React.useState('one');
