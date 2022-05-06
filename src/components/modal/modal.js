@@ -4,9 +4,13 @@ import styles from './modal.module.css';
 import ModalOverlay from '../modal-overlay/modal-overlay';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { CLOSE_MODAL } from '../../services/actions/modal';
 
 
-const Modal = ({active, onClose, ...props}) => {
+const Modal = (props) => {
+
+    const dispatch = useDispatch();
     
     const portal = document.getElementById("portal");    
   
@@ -21,6 +25,17 @@ const Modal = ({active, onClose, ...props}) => {
             document.removeEventListener("keydown", onClose);
         };
     }, []);
+
+    const active = useSelector((state) => state.modal.ingridientModal);
+    
+    function onClose() {
+        dispatch({
+            type: CLOSE_MODAL,
+            ingridientModal: false,
+        })
+    }
+
+   
     
 
 

@@ -1,12 +1,18 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './ingredient-details.module.css'
 import PropTypes from 'prop-types';
 import menuItemPropTypes from '../../utils/constants'
+import { useDispatch, useSelector } from 'react-redux';
+import {getData} from '../../services/actions/actions'
 
-const IngredientDetails = ({ data}) => {
+const IngredientDetails = () => {
+    const dispatch = useDispatch();
+    useEffect(()=> {
+        dispatch(getData());
+    }, [dispatch])
     
-  
-    console.log(data);
+  const data = useSelector((state) => state.ingridients.ingridients)
+  console.log(data);
     return (
       
         <>
@@ -18,7 +24,7 @@ const IngredientDetails = ({ data}) => {
             </div>
             {data && 
                 <div className={styles.img}>
-                    <img className="fit-picture" src={data.image_large}></img>
+                    <img className="fit-picture" src={data.image_large[0]}></img>
                 </div>
             }    
             

@@ -6,20 +6,20 @@ import PropTypes from 'prop-types';
 import menuItemPropTypes from '../../utils/constants'
 import {connect} from 'react-redux'
 import { useDispatch, useSelector } from "react-redux";
-import {getData} from '../../services/actions'
+import {getData} from '../../services/actions/actions'
 
 
 
  
 
-const BurgerIngredients = ({data, active, setActive, setItem, setModalDetail}) => {
+const BurgerIngredients = ({ active, setActive, setItem, setModalDetail}) => {
     const dispatch = useDispatch();
     useEffect(()=> {
         dispatch(getData());
     }, [dispatch])
 
-    const ingredients = useSelector((state) => state.ingridients);
-    console.log(ingredients);
+    const data = useSelector((state) => state.ingridients.ingridients);
+    
 
     const [current, setCurrent] = React.useState('one');
     return (

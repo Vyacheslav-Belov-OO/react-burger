@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AppHeader from '../app-header/app-header';
 import BurgerIngredients from '../burger-ingredients/burger-ingredients';
 import styles from './app.module.css';
@@ -7,6 +7,8 @@ import Modal from '../modal/modal';
 import OrderDetails from '../order-details/order-details';
 import IngredientDetails from '../ingredient-details/ingredient-details';
 import {apiUrl} from '../../utils/apiUrl'
+import { useDispatch, useSelector } from 'react-redux';
+import {getData} from '../../services/actions/actions'
 
 
 function App() {
@@ -14,33 +16,39 @@ function App() {
 
   const [state, setState] = React.useState({data: null,});
   const [modalActive, setModalActive] = React.useState(false);
-  const [modalOrder, setModalOrder] = React.useState(false);
-  const [modalDetail, setModalDetail] = React.useState(false);
+  const [modalOrder, setModalOrder] = React.useState(false);  
   const [itemID, setItemId] = React.useState('')
 
-  React.useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-          throw new Error('Ответ сети был не ok.');
-        }
-        const resJson = await response.json();
-        setState({ data: resJson.data });
-      }
-      catch (e) {
-        console.log(e)
-      }
-    };
-    fetchData();
-    
-  }, []);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getData())
+  },[dispatch])
 
-  const onClose = () =>{
-    setModalActive(false)
-    setModalOrder(false)
-    setModalDetail(false)
-};
+  const data = useSelector((state) => state.ingridients.ingridients);
+
+  // React.useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(apiUrl);
+  //       if (!response.ok) {
+  //         throw new Error('Ответ сети был не ok.');
+  //       }
+  //       const resJson = await response.json();
+  //       setState({ data: resJson.data });
+  //     }
+  //     catch (e) {
+  //       console.log(e)
+  //     }
+  //   };
+  //   fetchData();
+    
+  // }, []);
+
+//   const onClose = () =>{
+//     setModalActive(false)
+//     setModalOrder(false)
+//     setModalDetail(false)
+// };
 
   const onOpenBurgerModal = () =>{   
     setModalActive(true)
@@ -53,28 +61,28 @@ function App() {
           <AppHeader /> 
       </header>
       <main className={styles.main}>
-        {state.data &&
+        {data &&
         <>
-          <BurgerIngredients data={state.data} active={modalActive} setActive={setModalActive} setItem={setItemId} setModalDetail={setModalDetail}/>
-          <BurgerConstructor data={state.data} setActive={onOpenBurgerModal}/>
+          <BurgerIngredients data={data} active={modalActive} setActive={setModalActive} setItem={setItemId} />
+          <BurgerConstructor data={data} setActive={onOpenBurgerModal}/>
         </>          
         }         
           
           
           {modalOrder &&
-            <Modal active={modalActive} onClose={onClose}>
+            <Modal active={modalActive} >
               <OrderDetails/>
           </Modal>
           }
-          {modalDetail &&
-            <Modal active={modalActive} onClose={onClose}>
+          
+            <Modal active={modalActive} >
 
-              {state.data &&
-                <IngredientDetails data={state.data.find(item => item._id == itemID)} />
+              {data &&
+                <IngredientDetails data={data.find(item => item._id == itemID)} />
               }
               
             </Modal>
-          }
+          
           
             
                     

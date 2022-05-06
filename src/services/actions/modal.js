@@ -1,0 +1,4 @@
+export const OPEN_MODAL = "OPEN_MODAL";
+export const CLOSE_MODAL = "CLOSE_MODAL";
+export const ADD_CURRENT_ITEM = "ADD_CURRENT_ITEM";
+export const REMOVE_CURRENT_ITEM = "REMOVE_CURRENT_ITEM";

@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import style from './burger-constructor.module.css'
 import {  CurrencyIcon, Button, ConstructorElement,DragIcon  } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from 'prop-types';
 import menuItemPropTypes from '../../utils/constants'
+import { useDispatch, useSelector } from 'react-redux';
 
 
-const BurgerConstructor= ({data, setActive}) => {   
+const BurgerConstructor= ({setActive}) => {  
+
+    const dispatch = useDispatch();
+    useEffect(() =>{
+
+    },[dispatch])
+    const data = useSelector((state) => state.ingridients.burgerConstructorList)
+    
     
     return (
         <div className={`${style.burger_constructor}`}>
             <div className={`${style.constructor_container} mt-25 `}>
                 <div className={`ml-10 mr-5 ${style.constructor_wrapper}`}>
 
-                    {data &&
+                    {data.lenght > 0 &&
                         <ConstructorElement
                         type="top"
                         isLocked={true}
@@ -24,7 +32,7 @@ const BurgerConstructor= ({data, setActive}) => {
                     }
                     
                 </div>
-                {data &&
+                {data.lenght > 0 &&
                     <div className={style.constructor_list}>
                         {data.slice(1, 30).map((item, key)=>(     
                             <div className={style.constructor_list_wrapper} key={item._id}>
@@ -45,7 +53,7 @@ const BurgerConstructor= ({data, setActive}) => {
                     </div>
                 }
                 
-                {data &&
+                {data.lenght > 0 &&
                     <div className={`ml-10 mr-5 ${style.constructor_wrapper}`}>
                         <ConstructorElement
                             type="bottom"

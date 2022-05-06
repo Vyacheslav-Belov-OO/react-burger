@@ -1,7 +1,8 @@
-import {apiUrl} from '../utils/apiUrl'
+import {apiUrl} from '../../utils/apiUrl'
 export const FETCH_DATA = 'FETCH_DATA';
 export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
 export const FETCH_DATA_FAILED = 'FETCH_DATA_FAILED';
+export const MODAL_INGRIDIENT= 'MODAL_INGRIDIENT';
 
 
 export function getData () {
@@ -23,7 +24,7 @@ export function getData () {
           if (res && res.success) {
             dispatch({
               type: FETCH_DATA_SUCCESS,
-              ingridients: res.data,
+              payload: res.data,
             });
           } else {
             dispatch({
@@ -38,3 +39,5 @@ export function getData () {
         });
     };
   }
+
+  
