@@ -9,13 +9,17 @@ import { OPEN_MODAL } from '../../services/actions/modal';
 
 
 
-const IngredientList = ( {data, header, setActive, setItem, setModalDetail} ) => {
+const IngredientList = ( {data, header} ) => {
     const dispatch = useDispatch();
 
-    function onClick() {
+    function onClick(item) {
         dispatch({
-          type: OPEN_MODAL,
-          ingridientModal: true,
+        type: OPEN_MODAL,
+        currentIngridient: item,         
+        ingridientModal: true,
+        orderModal: false,
+        isOpen: true,
+         
         });
         
       }
@@ -25,7 +29,7 @@ const IngredientList = ( {data, header, setActive, setItem, setModalDetail} ) =>
             <p className="text text_type_main-medium mt-10 mb-6">{header}</p>
             <div className={`pl ${style.card}`}>                
                 {data.map((item, key)=>(
-                    <div className={style.card_content} key={item._id} onClick={onClick} id={item._id}>
+                    <div className={style.card_content} key={item._id} onClick={() => onClick(item)} id={item._id}>
                     {/* <div className={style.card_content} key={item._id} onClick={()=>{setItem(item._id); setActive(true); setModalDetail(true)}} id={item._id}> */}
                         <img className={`mb-1 ${style.avatar}`} src={item.image} alt="avatar" />                        
                         <div className={`mb-1 ${style.price}`}>
@@ -40,13 +44,14 @@ const IngredientList = ( {data, header, setActive, setItem, setModalDetail} ) =>
         </div>
     );
 };
-IngredientList.propTypes = {
-    data: PropTypes.arrayOf(menuItemPropTypes.isRequired).isRequired,
-    header: PropTypes.string.isRequired, 
-    setActive: PropTypes.func.isRequired, 
-    setItem: PropTypes.func.isRequired, 
-    setModalDetail: PropTypes.func.isRequired
+
+// IngredientList.propTypes = {
+//     data: PropTypes.arrayOf(menuItemPropTypes.isRequired).isRequired,
+//     header: PropTypes.string.isRequired, 
+//     setActive: PropTypes.func.isRequired, 
+//     setItem: PropTypes.func.isRequired, 
+//     setModalDetail: PropTypes.func.isRequired
     
-}
+// }
 
 export default IngredientList;

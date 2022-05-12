@@ -4,15 +4,27 @@ import {  CurrencyIcon, Button, ConstructorElement,DragIcon  } from '@ya.praktik
 import PropTypes from 'prop-types';
 import menuItemPropTypes from '../../utils/constants'
 import { useDispatch, useSelector } from 'react-redux';
+import { OPEN_MODAL } from '../../services/actions/modal';
 
 
-const BurgerConstructor= ({setActive}) => {  
+const BurgerConstructor= () => {  
 
     const dispatch = useDispatch();
     useEffect(() =>{
 
     },[dispatch])
+
     const data = useSelector((state) => state.ingridients.burgerConstructorList)
+  
+
+    function onOpen ()  {
+        dispatch({
+            type: OPEN_MODAL,
+            isOpen: true,
+            orderModal: true,
+            ingridientModal:false,
+        })
+    }
     
     
     return (
@@ -73,7 +85,7 @@ const BurgerConstructor= ({setActive}) => {
                     <CurrencyIcon type="primary" />
                 </div>
                     
-                <Button type="primary" size="large" onClick={setActive}>Оформить заказ</Button>
+                <Button type="primary" size="large" onClick={onOpen}>Оформить заказ</Button>
             </div>
            
             

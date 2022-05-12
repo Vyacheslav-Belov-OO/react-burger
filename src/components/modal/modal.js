@@ -5,7 +5,7 @@ import ModalOverlay from '../modal-overlay/modal-overlay';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { CLOSE_MODAL } from '../../services/actions/modal';
+import { CLOSE_MODAL, OPEN_MODAL } from '../../services/actions/modal';
 
 
 const Modal = (props) => {
@@ -26,19 +26,22 @@ const Modal = (props) => {
         };
     }, []);
 
-    const active = useSelector((state) => state.modal.ingridientModal);
+    const active = useSelector((state) => state.modal.isOpen);
+   
+    
     
     function onClose() {
         dispatch({
             type: CLOSE_MODAL,
             ingridientModal: false,
+            orderModal: false,
+            isOPen:false,
+            
         })
     }
 
    
-    
-
-
+   
     return ReactDOM.createPortal(
         <>
             <ModalOverlay active={active} onClose={onClose}/>
@@ -54,10 +57,10 @@ const Modal = (props) => {
     );
 };
 
-Modal.propTypes= {
-    active: PropTypes.bool.isRequired,
-    onClose: PropTypes.func.isRequired  
-}
+// Modal.propTypes= {
+//     active: PropTypes.bool.isRequired,
+//     onClose: PropTypes.func.isRequired  
+// }
 
 
 export default Modal;

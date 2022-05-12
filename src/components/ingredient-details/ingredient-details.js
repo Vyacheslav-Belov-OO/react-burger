@@ -11,7 +11,7 @@ const IngredientDetails = () => {
         dispatch(getData());
     }, [dispatch])
     
-  const data = useSelector((state) => state.ingridients.ingridients)
+  const data = useSelector((state) => state.modal.currentIngridient)
   console.log(data);
     return (
       
@@ -24,7 +24,7 @@ const IngredientDetails = () => {
             </div>
             {data && 
                 <div className={styles.img}>
-                    <img className="fit-picture" src={data.image_large[0]}></img>
+                    <img className="fit-picture" src={data.image_large}></img>
                 </div>
             }    
             
@@ -79,10 +79,11 @@ const IngredientDetails = () => {
         </>
     );
 };
-IngredientDetails.propTypes = {
-    data: menuItemPropTypes.isRequired,
+
+// IngredientDetails.propTypes = {
+//     data: menuItemPropTypes.isRequired,
   
 
-}
+// }
 
 export default IngredientDetails;

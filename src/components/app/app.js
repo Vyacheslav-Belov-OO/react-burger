@@ -13,10 +13,7 @@ import {getData} from '../../services/actions/actions'
 
 function App() {
   
-
-  const [state, setState] = React.useState({data: null,});
-  const [modalActive, setModalActive] = React.useState(false);
-  const [modalOrder, setModalOrder] = React.useState(false);  
+  const [modalActive, setModalActive] = React.useState(false); 
   const [itemID, setItemId] = React.useState('')
 
   const dispatch = useDispatch();
@@ -25,36 +22,9 @@ function App() {
   },[dispatch])
 
   const data = useSelector((state) => state.ingridients.ingridients);
+  const modalOrder = useSelector((state) => state.modal.orderModal );
+  const ingridientOrder = useSelector((state) => state.modal.ingridientModal );
 
-  // React.useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch(apiUrl);
-  //       if (!response.ok) {
-  //         throw new Error('Ответ сети был не ok.');
-  //       }
-  //       const resJson = await response.json();
-  //       setState({ data: resJson.data });
-  //     }
-  //     catch (e) {
-  //       console.log(e)
-  //     }
-  //   };
-  //   fetchData();
-    
-  // }, []);
-
-//   const onClose = () =>{
-//     setModalActive(false)
-//     setModalOrder(false)
-//     setModalDetail(false)
-// };
-
-  const onOpenBurgerModal = () =>{   
-    setModalActive(true)
-    setModalOrder(true)  
-  }
-  
   return (
     <div>
       < header className={styles.app_header}>    
@@ -64,30 +34,23 @@ function App() {
         {data &&
         <>
           <BurgerIngredients data={data} active={modalActive} setActive={setModalActive} setItem={setItemId} />
-          <BurgerConstructor data={data} setActive={onOpenBurgerModal}/>
+          <BurgerConstructor data={data}/>
         </>          
         }         
           
           
           {modalOrder &&
-            <Modal active={modalActive} >
+            <Modal >
               <OrderDetails/>
-          </Modal>
-          }
-          
-            <Modal active={modalActive} >
-
-              {data &&
-                <IngredientDetails data={data.find(item => item._id == itemID)} />
-              }
-              
             </Modal>
-          
-          
-            
-                    
-          
-        
+          }
+          {ingridientOrder &&
+            <Modal>
+              {data &&
+                <IngredientDetails />
+              }              
+            </Modal>
+          }
             
       </main>
     </div>

@@ -1,7 +1,8 @@
-import {OPEN_MODAL, CLOSE_MODAL} from '../actions/modal'
+import {OPEN_MODAL, CLOSE_MODAL, ADD_CURRENT_ITEM, REMOVE_CURRENT_ITEM} from '../actions/modal'
 
 
 export const defaultState = {
+    isOpen: false,
     currentIngridient:{},
     ingridientModal:false,
     orderModal: false,
@@ -20,6 +21,12 @@ export const getModalReducer = (state = defaultState, action) => {
             return {
                 ...state,
                 ...action,
+            }
+        }
+        case ADD_CURRENT_ITEM: {
+            return {
+                ...state, 
+                currentIngridient:  { ...action.ingidient}
             }
         }
             
