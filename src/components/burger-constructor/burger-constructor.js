@@ -1,11 +1,42 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import style from './burger-constructor.module.css'
 import {  CurrencyIcon, Button, ConstructorElement,DragIcon  } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from 'prop-types';
 import menuItemPropTypes from '../../utils/constants'
+import { DataContext } from '../../services/context';
 
 
-const BurgerConstructor= ({data, setActive}) => {   
+
+const BurgerConstructor= ({setActive, sendOrderRequest}) => {  
+
+    const data = React.useContext(DataContext) 
+    const bunArr = data.filter(item => item.type == 'bun')
+    const bun = bunArr[Math.floor(Math.random() * bunArr.length)];
+    const ingredients= data.filter(item => item.type !=='bun')
+
+    
+
+
+    
+  
+    let sum = bun.price*2 ;
+
+    const total = ingredients.map(function (item) {
+      if (item.__v == 0) {
+        return sum + parseInt(item.price, 10) * 1 ;
+      } else {
+        return 0;
+      }
+    });
+    const result = total.reduce(function (sum, elem) {
+        return sum + elem;
+      }, 0);
+
+      
+
+      
+     
+   
     
     return (
         <div className={`${style.burger_constructor}`}>
@@ -16,9 +47,9 @@ const BurgerConstructor= ({data, setActive}) => {
                         <ConstructorElement
                         type="top"
                         isLocked={true}
-                        text="Краторная булка N-200i (верх)"
-                        price={data[0].price}
-                        thumbnail={data[0].image_mobile}
+                        text={bun.name}
+                        price={bun.price}
+                        thumbnail={bun.image_mobile}
                         className="constructor-element"
                     />
                     }
@@ -26,7 +57,7 @@ const BurgerConstructor= ({data, setActive}) => {
                 </div>
                 {data &&
                     <div className={style.constructor_list}>
-                        {data.slice(1, 30).map((item, key)=>(     
+                        {ingredients.map((item, key)=>(     
                             <div className={style.constructor_list_wrapper} key={item._id}>
                                 <div className="mr-2" style={{ cursor: "pointer" }}>
                                     <DragIcon type="primary" />
@@ -50,9 +81,9 @@ const BurgerConstructor= ({data, setActive}) => {
                         <ConstructorElement
                             type="bottom"
                             isLocked={true}
-                            text="Краторная булка N-200i (низ)"
-                            price={data[0].price}
-                            thumbnail={data[0].image_mobile}
+                            text={bun.name}
+                            price={bun.price}
+                            thumbnail={bun.image_mobile}
                         />
                     </div>
                 }
@@ -61,11 +92,11 @@ const BurgerConstructor= ({data, setActive}) => {
 
             <div className={`pt-10 ${style.order_block}`}>
                 <div className={`mr-10 ${style.order_block_price}`}>
-                    <p className={`text text_type_digits-medium ${style.order_price}`}>610</p>
+                    <p className={`text text_type_digits-medium ${style.order_price}`}> {result ? result : "0"}</p>
                     <CurrencyIcon type="primary" />
                 </div>
                     
-                <Button type="primary" size="large" onClick={setActive}>Оформить заказ</Button>
+                <Button type="primary" size="large" onClick={()=> {setActive(); sendOrderRequest()}}>Оформить заказ</Button>
             </div>
            
             

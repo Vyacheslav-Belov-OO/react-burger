@@ -1,18 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './burger-ingredients.module.css';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import IngredientList from '../ingredient-list/ingredient-list';
 import PropTypes from 'prop-types';
 import menuItemPropTypes from '../../utils/constants'
+import { DataContext } from '../../services/context';
 
 
 
 
 
-const BurgerIngredients = ({data, active, setActive, setItem, setModalDetail}) => {
-  
+const BurgerIngredients = ({active, setActive, setItem, setModalDetail}) => { 
    
     const [current, setCurrent] = React.useState('one');
+    const data = useContext(DataContext);
     return (
         <div className={styles.burger_ingredients}>
             <p className="text text_type_main-large mt-10 mb-5">

@@ -7,7 +7,7 @@ import menuItemPropTypes from '../../utils/constants'
 
 
 const IngredientList = ( {data, header, setActive, setItem, setModalDetail} ) => {
-    console.log(data);
+    
     return (
         <div className={`mb-10 ${style.card_main}`}>
             <p className="text text_type_main-medium mt-10 mb-6">{header}</p>

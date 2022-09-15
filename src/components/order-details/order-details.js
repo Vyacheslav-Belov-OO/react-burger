@@ -2,12 +2,14 @@ import React from 'react';
 import styles from './order-detail.module.css'
 import Img from '../../img/done.png';
 
-const OrderDetails = () => {
+const OrderDetails = ({order_number, ...props}) => {
+    
+
     return (
         <>
         
             <div className={styles.price}>
-                <p className="text text_type_digits-large">034536</p>
+                <p className="text text_type_digits-large">{order_number ? order_number : "Loading"}</p>
             </div>
             <div className={styles.order_ind}>
                 <p className="text text_type_main-medium">
